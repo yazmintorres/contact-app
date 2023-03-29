@@ -25,17 +25,25 @@ app.get("/api/contacts", async (req, res) => {
 });
 
 // create the POST request
-app.post("/api/students", async (req, res) => {
+app.post("/api/contact", async (req, res) => {
   try {
-    const newStudent = {
+    const newContact = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      iscurrent: req.body.iscurrent,
+      phone: req.body.phone,
+      email: req.body.email,
+      notes: req.body.notes,
     };
-    //console.log([newStudent.firstname, newStudent.lastname, newStudent.iscurrent]);
+    console.log(req.body);
     const result = await db.query(
-      "INSERT INTO students(firstname, lastname, is_current) VALUES($1, $2, $3) RETURNING *",
-      [newStudent.firstname, newStudent.lastname, newStudent.iscurrent]
+      "INSERT INTO contacts (firstname, lastname, phone, email, notes) VALUES($1, $2, $3, $4, $5) RETURNING *",
+      [
+        newContact.firstname,
+        newContact.lastname,
+        newContact.phone,
+        newContact.email,
+        newContact.notes,
+      ]
     );
     console.log(result.rows[0]);
     res.json(result.rows[0]);
