@@ -8,8 +8,8 @@ const Contact = ({ contact, toUpdate, toDelete }) => {
     toUpdate(toUpdateStudent);
   };
 
-  const onDelete = (toDeleteStudent) => {
-    toDelete(toDeleteStudent);
+  const onDelete = (toDeleteContact) => {
+    toDelete(toDeleteContact);
   };
 
   return (

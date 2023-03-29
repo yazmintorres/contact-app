@@ -42,14 +42,15 @@ const ListContacts = () => {
   };
 
   //A function to handle the Delete funtionality
-  const onDelete = (student) => {
+  const onDelete = (contact) => {
     //console.log(student, "delete method")
-    return fetch(`http://localhost:8080/api/students/${student.id}`, {
+    return fetch(`http://localhost:8080/api/contact/${contact.contact_id}`, {
       method: "DELETE",
     }).then((response) => {
+      console.log(response);
       //console.log(response);
       if (response.ok) {
-        loadStudents();
+        loadContacts();
       }
     });
   };
