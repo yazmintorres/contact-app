@@ -67,29 +67,22 @@ app.delete("/api/contact/:contactId", async (req, res) => {
   }
 });
 
-//A put request - Update a student
-app.put("/api/students/:studentId", async (req, res) => {
+//A put request - Update a contact
+app.put("/api/contact/:contactId", async (req, res) => {
+  console.log(req.body);
   //console.log(req.params);
   //This will be the id that I want to find in the DB - the student to be updated
-  const studentId = req.params.studentId;
-  const updatedStudent = {
-    id: req.body.id,
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    iscurrent: req.body.is_current,
-  };
-  console.log("In the server from the url - the student id", studentId);
+  const contactId = req.params.contactId;
+  const { firstname, lastname, phone, email, notes } = req.body;
+  console.log("In the server from the url - the contact id", contactId);
   console.log(
-    "In the server, from the react - the student to be edited",
-    updatedStudent
+    "In the server, from the react - the contact to be edited",
+    req.body
   );
+
   // UPDATE students SET lastname = "something" WHERE id="16";
-  const query = `UPDATE students SET firstname=$1, lastname=$2, is_current=$3 WHERE id=${studentId} RETURNING *`;
-  const values = [
-    updatedStudent.firstname,
-    updatedStudent.lastname,
-    updatedStudent.iscurrent,
-  ];
+  const query = `UPDATE contacts SET firstname=$1, lastname=$2, phone=$3, email=$4, notes=$5 WHERE contact_id=${contactId} RETURNING *`;
+  const values = [firstname, lastname, phone, email, notes];
   try {
     const updated = await db.query(query, values);
     console.log(updated.rows[0]);
