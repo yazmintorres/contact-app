@@ -95,3 +95,15 @@ ALTER TABLE ONLY public.students
 --
 -- PostgreSQL database dump complete
 --
+
+
+-- CREATE STUDENTS TABLE 
+
+CREATE TABLE public.contacts (
+	contact_id serial PRIMARY KEY,
+	firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR (255) NOT NULL,
+	phone VARCHAR(25) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+    notes TEXT
+);
