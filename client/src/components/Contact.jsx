@@ -16,9 +16,12 @@ const Contact = ({ contact, toUpdate, toDelete }) => {
   return (
     <Card>
       <Card.Body>
-        <Card.Title>
+        <Card.Title style={{ marginBottom: "15px" }}>
           {contact.firstname} {contact.lastname}
         </Card.Title>
+        <Card.Text>Phone Number: {contact.phone}</Card.Text>
+        <Card.Text>Email: {contact.email}</Card.Text>
+        <Card.Text>Notes: {contact.notes}</Card.Text>
         <Button
           variant="outline-danger"
           onClick={() => {
