@@ -35,7 +35,6 @@ const ListContacts = () => {
 
   //A function to handle the Delete funtionality
   const onDelete = (contact) => {
-    //console.log(student, "delete method")
     return fetch(`http://localhost:8080/api/contact/${contact.contact_id}`, {
       method: "DELETE",
     }).then((response) => {
@@ -49,8 +48,6 @@ const ListContacts = () => {
 
   //A function to handle the Update functionality
   const onUpdate = (toUpdateContact) => {
-    console.log(toUpdateContact);
-    //console.log(toUpdateStudent);
     setEditingContact(toUpdateContact);
   };
 
@@ -73,6 +70,7 @@ const ListContacts = () => {
         </ul>
       </div>
       <CreateContact
+        //   I AM CONFUSED ON WHY THIS IS NECESSARY --> ASK CRISTINA FOR AN EXPLANATION (TRIPPY)
         key={editingContact ? editingContact.id : null}
         onSaveContact={onSaveContact}
         editingContact={editingContact}
