@@ -54,7 +54,7 @@ app.post("/api/contact", async (req, res) => {
 });
 
 // delete request for contacts
-app.delete("/api/contacts/:contactId", async (req, res) => {
+app.delete("/api/contact/:contactId", async (req, res) => {
   try {
     console.log(req.params);
     const contactId = req.params.contactId;
