@@ -21,7 +21,7 @@ const Contact = ({ contact, toUpdate, toDelete }) => {
         <Button
           variant="outline-danger"
           onClick={() => {
-            onDelete(student);
+            onDelete(contact);
           }}
           style={{ padding: "0.6em", marginRight: "0.9em" }}
         >
@@ -30,7 +30,7 @@ const Contact = ({ contact, toUpdate, toDelete }) => {
         <Button
           variant="outline-info"
           onClick={() => {
-            onUpdate(student);
+            onUpdate(contact);
           }}
           style={{ padding: "0.6em" }}
         >

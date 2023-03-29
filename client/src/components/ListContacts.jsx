@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as ioicons from "react-icons/io5";
-import MyForm from "./Form";
+import CreateContact from "./CreateContact";
 import Contact from "./Contact";
 
 const ListContacts = () => {
@@ -13,8 +13,11 @@ const ListContacts = () => {
   //this is the state needed for the UpdateRequest
   const [editingStudent, setEditingStudent] = useState(null);
 
+  //   needed to do update request
+  const [editingContact, setEditingContact] = useState(null);
+
+  // A function to fetch the list of contacts that will be load anytime that list change
   const loadContacts = () => {
-    // A function to fetch the list of students that will be load anytime that list change
     fetch("http://localhost:8080/api/contacts")
       .then((response) => response.json())
       .then((contacts) => {
@@ -26,9 +29,9 @@ const ListContacts = () => {
     loadContacts();
   }, []);
 
-  const onSaveStudent = (newStudent) => {
+  const onSaveContact = (newContact) => {
     //console.log(newStudent, "From the parent - List of Students");
-    setStudents((students) => [...students, newStudent]);
+    setContacts((contacts) => [...contacts, newContact]);
   };
 
   //A function to control the update in the parent (student component)
@@ -75,10 +78,11 @@ const ListContacts = () => {
           })}
         </ul>
       </div>
-      <MyForm
+      <CreateContact
         key={editingStudent ? editingStudent.id : null}
-        onSaveStudent={onSaveStudent}
+        onSaveContact={onSaveContact}
         editingStudent={editingStudent}
+        editingContact={editingContact}
         onUpdateStudent={updateStudent}
       />
     </div>
