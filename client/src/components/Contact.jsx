@@ -4,8 +4,9 @@ import Button from "react-bootstrap/Button";
 import * as ioicons from "react-icons/io5";
 
 const Contact = ({ contact, toUpdate, toDelete }) => {
-  const onUpdate = (toUpdateStudent) => {
-    toUpdate(toUpdateStudent);
+  const onUpdate = (toUpdateContact) => {
+    // console.log(toUpdateContact);
+    toUpdate(toUpdateContact);
   };
 
   const onDelete = (toDeleteContact) => {

@@ -7,12 +7,6 @@ const ListContacts = () => {
   // this is my original state with an array of contacts
   const [contacts, setContacts] = useState([]);
 
-  //   justkeep to avoid errors for now
-  const [students, setStudents] = useState([]);
-
-  //this is the state needed for the UpdateRequest
-  const [editingStudent, setEditingStudent] = useState(null);
-
   //   needed to do update request
   const [editingContact, setEditingContact] = useState(null);
 
@@ -35,10 +29,8 @@ const ListContacts = () => {
   };
 
   //A function to control the update in the parent (student component)
-  const updateStudent = (savedStudent) => {
-    // console.log("Line 29 savedStudent", savedStudent);
-    // This function should update the whole list of students -
-    loadStudents();
+  const updateContact = (savedContact) => {
+    loadContacts();
   };
 
   //A function to handle the Delete funtionality
@@ -56,9 +48,10 @@ const ListContacts = () => {
   };
 
   //A function to handle the Update functionality
-  const onUpdate = (toUpdateStudent) => {
+  const onUpdate = (toUpdateContact) => {
+    console.log(toUpdateContact);
     //console.log(toUpdateStudent);
-    setEditingStudent(toUpdateStudent);
+    setEditingContact(toUpdateContact);
   };
 
   return (
@@ -80,11 +73,10 @@ const ListContacts = () => {
         </ul>
       </div>
       <CreateContact
-        key={editingStudent ? editingStudent.id : null}
+        key={editingContact ? editingContact.id : null}
         onSaveContact={onSaveContact}
-        editingStudent={editingStudent}
         editingContact={editingContact}
-        onUpdateStudent={updateStudent}
+        onUpdateContact={updateContact}
       />
     </div>
   );

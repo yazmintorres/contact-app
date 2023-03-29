@@ -1,21 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
-const CreateContact = ({
-  onSaveContact,
-  editingStudent,
-  onUpdateStudent,
-  editingContact,
-}) => {
-  // This is the original State with not initial student
-  const [student, setStudent] = useState(
-    editingStudent || {
-      firstname: "",
-      lastname: "",
-      is_current: false,
-    }
-  );
-
+const CreateContact = ({ onSaveContact, onUpdateContact, editingContact }) => {
   // create initial state for contacts list
 
   const [contact, setContact] = useState(
@@ -32,7 +18,7 @@ const CreateContact = ({
   const handleChange = (property) => {
     return (e) => {
       setContact({ ...contact, [property]: e.target.value });
-      console.log(contact);
+      // console.log(contact);
     };
   };
 
@@ -65,22 +51,22 @@ const CreateContact = ({
       });
   };
 
-  // useEffect(() => {
-  //   console.log(postContact());
-  // });
-
   //A function to handle the post request
-  const putStudent = (toEditStudent) => {
-    return fetch(`http://localhost:8080/api/students/${toEditStudent.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(toEditStudent),
-    })
+  const putContact = (toEditContact) => {
+    console.log("test");
+    return fetch(
+      `http://localhost:8080/api/contact/${toEditContact.contact_id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(toEditContact),
+      }
+    )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        onUpdate(data);
+        onUpdateContact(data);
         //this line just for cleaning the form
         clearForm();
       });
@@ -97,8 +83,8 @@ const CreateContact = ({
     }
     console.log("Actual contact variable in this moment", contact);
     console.log("Temp variable with null replacing", temp);
-    if (contact.id) {
-      putStudent(student);
+    if (temp.contact_id) {
+      putContact(temp);
     } else {
       postContact(temp);
     }
@@ -155,7 +141,7 @@ const CreateContact = ({
         <textarea
           id="add-user-notes"
           placeholder="Notes"
-          value={contact.notes}
+          value={!contact.notes ? "" : contact.notes}
           onChange={handleChange("notes")}
         />
       </Form.Group>
@@ -163,7 +149,7 @@ const CreateContact = ({
         <Button type="submit" variant="outline-success">
           {contact.contact_id ? "Edit Contact" : "Add Contact"}
         </Button>
-        {contact.id ? (
+        {contact.contact_id ? (
           <Button type="button" variant="outline-warning" onClick={clearForm}>
             Cancel
           </Button>
