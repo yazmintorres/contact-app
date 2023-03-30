@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
-const CreateContact = ({ onSaveContact, onUpdateContact, editingContact }) => {
+const UserForm = ({ onSaveContact, onUpdateContact, editingContact }) => {
   // create initial state for contacts list
 
   const [contact, setContact] = useState(
@@ -30,6 +30,7 @@ const CreateContact = ({ onSaveContact, onUpdateContact, editingContact }) => {
       email: "",
       notes: "",
     });
+    window.location = "/";
   };
 
   //A function to handle the post request
@@ -159,4 +160,4 @@ const CreateContact = ({ onSaveContact, onUpdateContact, editingContact }) => {
   );
 };
 
-export default CreateContact;
+export default UserForm;
