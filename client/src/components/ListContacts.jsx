@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as ioicons from "react-icons/io5";
-import CreateContact from "./CreateContact";
 import Contact from "./Contact";
+import UserForm from "./UserForm";
 
 const ListContacts = () => {
   // this is my original state with an array of contacts
@@ -69,8 +69,8 @@ const ListContacts = () => {
           })}
         </ul>
       </div>
-      <CreateContact
-        //   I AM CONFUSED ON WHY THIS IS NECESSARY --> ASK CRISTINA FOR AN EXPLANATION (TRIPPY)
+      <UserForm
+        //   I AM CONFUSED ON WHY THIS IS NECESSARY --> ?
         key={editingContact ? editingContact.id : null}
         onSaveContact={onSaveContact}
         editingContact={editingContact}
