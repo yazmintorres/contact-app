@@ -48,6 +48,7 @@ const ListContacts = () => {
 
   //A function to handle the Update functionality
   const onUpdate = (toUpdateContact) => {
+    console.log();
     setEditingContact(toUpdateContact);
   };
 
@@ -71,10 +72,11 @@ const ListContacts = () => {
       </div>
       <UserForm
         //   I AM CONFUSED ON WHY THIS KEY IS NECESSARY --> ?
-        key={editingContact ? editingContact.id : null}
+        key={editingContact ? editingContact.contact_id : null}
         onSaveContact={onSaveContact}
         editingContact={editingContact}
         onUpdateContact={updateContact}
+        toUpdate={onUpdate}
       />
     </div>
   );

@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
-const UserForm = ({ onSaveContact, onUpdateContact, editingContact }) => {
+const UserForm = ({
+  onSaveContact,
+  onUpdateContact,
+  editingContact,
+  toUpdate,
+}) => {
   // create initial state for contacts list
 
   const [contact, setContact] = useState(
@@ -30,7 +35,9 @@ const UserForm = ({ onSaveContact, onUpdateContact, editingContact }) => {
       email: "",
       notes: "",
     });
-    window.location = "/";
+    toUpdate(null);
+
+    // window.location = "/";
   };
 
   //A function to handle the post request
